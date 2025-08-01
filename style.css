@@ -1,0 +1,563 @@
+/* --- الخطوط الأساسية والتهيأة --- */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=VT323&family=Patrick+Hand&display=swap');
+:root {
+    --bg-color: #f4f6f9; --calculator-bg: #ffffff; --display-bg: #eef1f5; --text-color: #2c3e50; --btn-bg: #fdfdfd; --btn-hover-bg: #e9ecef; --operator-bg: #f1f3f5; --operator-hover-bg: #e2e6ea; --equals-bg: #3498db; --equals-hover-bg: #2980b9; --equals-text: #ffffff; --shadow: 0 5px 20px rgba(0, 0, 0, 0.08); --border-color: #e4e7ec; --font-family: 'Cairo', sans-serif; --bg-image: none;
+}
+body { font-family: var(--font-family); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--bg-color); transition: all 0.5s ease; color: var(--text-color); background-image: var(--bg-image, none); background-size: cover; background-position: center; }
+
+
+/* --- الثيمات (النسخة الكاملة والمحدثة) --- */
+
+/* 2. الثيم الداكن (احترافي وهادئ) */
+.theme-dark 
+{ --bg-color: #121212; --calculator-bg: #1e1e1e; --display-bg: #2a2a2a; --text-color: #e0e0e0; --btn-bg: #2c2c2c; --btn-hover-bg: #3a3a3a; --operator-bg: #333333; --operator-hover-bg: #404040; --equals-bg: #bb86fc; --equals-hover-bg: #a764fc; --equals-text: #121212; --shadow: 0 4px 20px rgba(0, 0, 0, 0.4); --border-color: #3a3a3a; }
+
+
+
+/* 2. الهامستر (بدون رسمة) */
+.theme-hamster { --bg-color: #fdf6e4; --calculator-bg: #ffffff; --display-bg: #f3eada; --text-color: #654321; --btn-bg: #fffaf0; --equals-bg: #e8a87c; --border-color: #e3d5b8; }
+.theme-hamster #hamster-peeking { transform: translateX(150px) !important; /* إخفاء الهامستر */ }
+
+
+/* 1. البحر العميق (تصميم جديد) */
+.theme-deep-ocean {
+    --bg-image: linear-gradient(to top, #021B79, #0575E6);
+    --calculator-bg: rgba(2, 27, 121, 0.5);
+    backdrop-filter: blur(5px);
+    --display-bg: rgba(2, 27, 121, 0.4);
+    --text-color: #f0f8ff;
+    --btn-bg: rgba(255, 218, 185, 0.8); /* لون رملي */
+    --operator-bg: rgba(173, 216, 230, 0.8); /* أزرق فاتح */
+    --equals-bg: #ff7f50; /* مرجاني */
+    --border-color: rgba(5, 117, 230, 0.5);
+    --btn-text-color: #021B79;
+}
+.theme-deep-ocean .btn { color: var(--btn-text-color); }
+.theme-deep-ocean .btn:active { animation: ocean-wave 0.4s ease-out; }
+@keyframes ocean-wave { 
+    0% { box-shadow: 0 0 0 0 rgba(255, 127, 80, 0.7); } 
+    100% { box-shadow: 0 0 0 20px rgba(255, 127, 80, 0); } 
+}
+
+
+/* 4. ضباب بنفسجي */
+.theme-purple-mist { --equals-bg: #9370db; --operator-bg: #e6e6fa; --bg-color: #f3e5f5; --calculator-bg: #fffbff; }
+
+/* 5. الغروب */
+.theme-sunset { --equals-bg: #ff6347; --operator-bg: #ffdab9; --bg-color: #fff0e5; --calculator-bg: #fffafa; }
+
+/* 6. شوكولاتة */
+.theme-chocolate { --equals-bg: #8b4513; --operator-bg: #d2b48c; --bg-color: #f5deb3; --text-color: #5C4033; --equals-text: #fff; --calculator-bg: #fff5e1;}
+
+/* 4. الفضاء (احترافي) */
+.theme-space { 
+    --bg-image: linear-gradient(to bottom, #0b0d17, #1c2541, #3a506b, #1c2541, #0b0d17), url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer color-interpolation-filters='sRGB'%3E%3CfeFuncR type='linear' slope='3' intercept='-2'/%3E%3CfeFuncG type='linear' slope='3' intercept='-2'/%3E%3CfeFuncB type='linear' slope='3' intercept='-2'/%3E%3C/feComponentTransfer%3E%3CfeBlend mode='screen' in2='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' fill='transparent'/%3E%3C/svg%3E");
+    --calculator-bg: rgba(22, 27, 34, 0.85); --display-bg: #010409; --text-color: #c9d1d9; 
+    --btn-bg: linear-gradient(145deg, #30363d, #21262d); --operator-bg: linear-gradient(145deg, #583d87, #4e2a88); 
+    --equals-bg: #58a6ff; --border-color: #30363d; --equals-text: #fff;
+    background-size: cover, auto; background-blend-mode: normal, overlay;
+}
+.theme-space .btn { color: var(--equals-text);}
+
+/* 3. النيون الليلي (خافت واحترافي) */
+.theme-neon-dark {
+    --bg-color: #101010;
+    --calculator-bg: #1A1A1A;
+    --display-bg: #000;
+    --text-color: #f0f0f0;
+    --btn-bg: #222;
+    --border-color: #333;
+}
+.theme-neon-dark .btn {
+    text-shadow: 0 0 4px, 0 0 8px; /* توهج أخف واحترافي */
+    border: 1px solid;
+}
+.theme-neon-dark .number { color: #50fa7b; border-color: #50fa7b; } /* أخضر دراكولا */
+.theme-neon-dark .operator { color: #ff79c6; border-color: #ff79c6; } /* وردي دراكولا */
+.theme-neon-dark .equals { color: #8be9fd; border-color: #8be9fd; --equals-bg: #222; } /* سماوي دراكولا */
+
+
+/* 9. الصحراء */
+.theme-desert { --bg-color: #f4a460; --calculator-bg: #fff8dc; --display-bg: #eee8aa; --text-color: #8b4513; --equals-bg: #cd853f; --operator-bg: #daa520; }
+
+/* الشفق القطبي (احترافي وثابت بدون أنيميشن) */
+.theme-aurora {
+    --bg-image: linear-gradient(160deg, #0d1a26 0%, #004d40 40%, #562e5b 70%, #0d1a26 100%);
+    --calculator-bg: rgba(22, 33, 62, 0.6);
+    backdrop-filter: blur(8px);
+    --display-bg: rgba(15, 16, 53, 0.7);
+    --text-color: #E6E6FA;
+    --btn-bg: rgba(30, 48, 92, 0.5);
+    --operator-bg: rgba(10, 137, 138, 0.5);
+    --equals-bg: #2E8B57;
+    --border-color: rgba(46, 139, 87, 0.4);
+    --equals-text: #E6E6FA;
+}
+.theme-aurora .operator {
+    color: #fff;
+}
+
+
+/* 11. الغابة (معدل) */
+.theme-forest { 
+    --bg-color: #2f4f4f; --calculator-bg: #556b2f; --display-bg: #6b8e23; --text-color: #f5f5dc; 
+    --btn-bg: #8fbc8f; --operator-bg: #468259; --equals-bg: #d2691e; --border-color: #3cb371; --text-color: #fff;
+}
+.theme-forest .operator { color: #fff; }
+
+/* 12. هندسي */
+.theme-geometric { background-color: #f5f5f5; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cccccc' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); --calculator-bg: #ffffff; --text-color: #333; --equals-bg: #3498db; --operator-bg: #ecf0f1; --border-color: #bdc3c7; }
+
+/* 13. الكريستال السحري (معدل) */
+.theme-mystic-crystal { --bg-image: linear-gradient(45deg, #483D8B, #6A5ACD); --calculator-bg: rgba(72, 61, 139, 0.6); --text-color: #E6E6FA; --display-bg: rgba(0, 0, 0, 0.3); --btn-bg: rgba(230, 230, 250, 0.2); --operator-bg: rgba(230, 230, 250, 0.3); --equals-bg: #FFD700; --border-color: rgba(230, 230, 250, 0.3); --equals-text: #483D8B; }
+.theme-mystic-crystal #user-id-display, .theme-mystic-crystal #history-list li { background-color: var(--display-bg); }
+
+/* 14. الحاسبة الكلاسيكية (معدل) */
+.theme-retro-calculator { 
+    --font-family: 'VT323', monospace; --bg-color: #d8d8d8; --calculator-bg: #F5F5DC; /* لون كريمي */
+    --display-bg: #9eb893; --text-color: #313131; --btn-bg: #e0e0e0; 
+    --operator-bg: #f9a825; --equals-bg: #d9534f; --border-color: #333; 
+}
+.theme-retro-calculator .main-display { font-size: 3rem; color: #3e443a; text-shadow: 0 0 2px #9eb893; }
+.theme-retro-calculator .btn { border-radius: 4px; }
+.theme-retro-calculator .modal-content { background-color: #F5F5DC; }
+
+/* 15. المزاج المتغير (معدل) */
+.theme-mood-flow { transition: all 1s ease-in-out; }
+.mood-morning { --bg-image: linear-gradient(to top, #FFEFBA, #FFFFFF); --text-color: #333; }
+.mood-day { --bg-image: linear-gradient(to top, #89f7fe, #66a6ff); --text-color: #1a2a6c; }
+.mood-evening { --bg-image: linear-gradient(to top, #ff7e5f, #feb47b); --text-color: #fff; }
+.mood-night { --bg-image: linear-gradient(to top, #001f3f, #1a1a2e); --text-color: #fff; }
+.theme-mood-flow { --calculator-bg: rgba(255,255,255,0.7); backdrop-filter: blur(10px); --border-color: rgba(200,200,200,0.5); --btn-bg: rgba(255,255,255,0.5); --operator-bg: rgba(255,255,255,0.6); }
+.mood-night.theme-mood-flow, .mood-evening.theme-mood-flow { --calculator-bg: rgba(22, 33, 62, 0.7); --border-color: rgba(255,255,255,0.2); --btn-bg: rgba(31, 64, 104, 0.6); --operator-bg: rgba(27, 51, 82, 0.7); }
+
+/* --- ثيمات جديدة --- */
+
+/* 16. ثيم الأفوكادو */
+.theme-avocado {
+    --bg-color: #F8FFF0; --calculator-bg: #fff; --display-bg: #E3F2E1; --text-color: #3D4531;
+    --btn-bg: #F8FFF0; --operator-bg: #C5E0B4; --equals-bg: #6F4E37; --border-color: #C5E0B4; --equals-text: #fff;
+    --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 95 C 20 95, 5 70, 5 50 C 5 20, 20 5, 50 5 C 80 5, 95 20, 95 50 C 95 70, 80 95, 50 95 Z' fill='rgba(85, 107, 47, 0.05)'/%3E%3C/svg%3E");
+}
+
+/* 17. ثيم الباندا */
+.theme-panda {
+    --bg-color: #F5F5F5; --calculator-bg: #FFFFFF; --display-bg: #EAEAEA; --text-color: #000000;
+    --btn-bg: #FFFFFF; --operator-bg: #A9A9A9; --equals-bg: #7C9A63; --border-color: #D3D3D3; --equals-text: #FFFFFF;
+    --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='30' r='10' fill='rgba(0,0,0,0.05)'/%3E%3Ccircle cx='70' cy='30' r='10' fill='rgba(0,0,0,0.05)'/%3E%3Ccircle cx='50' cy='50' r='30' fill='rgba(0,0,0,0.03)'/%3E%3C/svg%3E");
+}
+
+/* 18. ثيم الورق القديم */
+.theme-old-paper {
+    --font-family: 'Times New Roman', serif; --bg-color: #FDF5E6; --calculator-bg: #FAF0E6;
+    --display-bg: #F5DEB3; --text-color: #5D4037; --btn-bg: #FFF5EE; --operator-bg: #EADDCA;
+    --equals-bg: #8B4513; --border-color: #D2B48C; --equals-text: #FFFFFF;
+    --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='10' stitchTiles='stitch'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* 19. ثيم الألعاب الكلاسيكية */
+.theme-8-bit {
+    --font-family: 'VT323', monospace; --bg-color: #000000; --calculator-bg: #222222;
+    --display-bg: #1a2b1a; --text-color: #39FF14; --btn-bg: #555555; --operator-bg: #D9534F;
+    --equals-bg: #428BCA; --border-color: #444; --equals-text: #FFFFFF;
+}
+.theme-8-bit .btn { border-radius: 2px; border-bottom: 4px solid #333; }
+.theme-8-bit .operator { border-bottom-color: #b3342f; }
+.theme-8-bit .equals { border-bottom-color: #2a6496; }
+.theme-8-bit .btn:active { transform: scale(0.95) translateY(2px); border-bottom-width: 2px; }
+.theme-8-bit .main-display { font-size: 3rem; }
+.theme-8-bit .text-color { color: #FFFFFF; } /* Numbers text color */
+.theme-8-bit .operator { color: #FFFFFF; }
+
+/* --- بقية أكواد CSS الوظيفية --- */
+/* (هنا تأتي بقية أكواد CSS التي أرسلتها لك في الردود السابقة، مثل تنسيقات loader و popup-menu والنوافذ المنبثقة) */
+
+
+
+#hamster { /* ... unchanged ... */ }
+#loader { /* ... unchanged ... */ }
+.hidden { display: none !important; }
+
+#app-container { width: 100%; max-width: 380px; padding: 10px; box-sizing: border-box; }
+.calculator { background-color: var(--calculator-bg); border-radius: 20px; box-shadow: var(--shadow); padding: 20px; transition: all 0.3s; position: relative; overflow: hidden; border: 1px solid var(--border-color);}
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+#user-id-display { font-size: 0.8rem; color: var(--text-color); opacity: 0.8; display: flex; align-items: center; gap: 5px; background-color: var(--display-bg); padding: 5px 10px; border-radius: 20px;}
+.icon-btn-small { background: none; border: none; font-size: 1rem; color: var(--text-color); cursor: pointer; opacity: 0.7; padding: 0; }
+.icon-btn { display: flex; flex-direction: column; justify-content: space-around; width: 24px; height: 24px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 10; }
+.icon-btn span { width: 24px; height: 3px; background-color: var(--text-color); border-radius: 10px; transition: all 0.3s linear; }
+
+/* --- تثبيت شاشة العرض --- */
+.display { background-color: var(--display-bg); color: var(--text-color); border-radius: 10px; padding: 10px 20px; text-align: left; margin-bottom: 20px; overflow-wrap: break-word; min-height: 90px; display: flex; flex-direction: column; justify-content: space-around; }
+.history-display { font-size: 1rem; opacity: 0.6; height: 20px; }
+.main-display { font-size: 2.5rem; font-weight: 700; }
+
+.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.btn { background-color: var(--btn-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 20px 0; font-size: 1.5rem; font-weight: 600; color: var(--text-color); cursor: pointer; transition: all 0.1s ease-in-out; }
+.btn:active { transform: scale(0.95); box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+.operator { background-color: var(--operator-bg); }
+.equals { grid-row: span 2; background-color: var(--equals-bg); color: var(--equals-text); }
+.scientific-keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; animation: slide-up 0.3s ease-out; }
+.scientific-keypad .btn { font-size: 1.2rem; padding: 15px 0; }
+@keyframes slide-up { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+#popup-menu { position: absolute; top: 60px; right: 20px; background-color: var(--calculator-bg); border-radius: 10px; box-shadow: var(--shadow); z-index: 100; border: 1px solid var(--border-color); padding: 10px; display: flex; flex-direction: column; gap: 5px; animation: fade-in 0.2s; }
+#popup-menu button { background: none; border: none; padding: 10px 15px; color: var(--text-color); font-family: 'Cairo', sans-serif; font-size: 1rem; cursor: pointer; text-align: right; display: flex; align-items: center; gap: 10px; border-radius: 8px; width: 100%; }
+#popup-menu button:hover { background-color: var(--btn-hover-bg); }
+@keyframes fade-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.modal-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px); }
+.modal-content { background: var(--calculator-bg); color: var(--text-color); padding: 25px; border-radius: 15px; width: 90%; max-width: 450px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow); }
+.close-modal-btn { position: absolute; top: 10px; left: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-color); }
+.setting-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+.setting-item:last-child { border-bottom: none; }
+.setting-item.column { flex-direction: column; align-items: flex-start; gap: 10px; }
+.settings-btn-full { width: 100%; padding: 10px 15px; font-size: 1rem; background-color: var(--btn-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 8px; cursor: pointer; font-family: 'Cairo', sans-serif; transition: background-color 0.2s; text-align: center; }
+.settings-btn-full:hover { background-color: var(--btn-hover-bg); }
+/* --- زر التيليجرام --- */
+.settings-btn-full.telegram-btn { background-color: #0088cc; color: #fff; border-color: #0088cc; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px;}
+.settings-btn-full.telegram-btn:hover { background-color: #007ab3; }
+.small-margin-top { margin-top: 10px; }
+
+#themes-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; width: 100%; }
+.choice-item { padding: 10px; border: 2px solid var(--border-color); border-radius: 10px; text-align: center; cursor: pointer; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 60px; transition: all 0.2s; }
+.choice-item:hover { transform: translateY(-3px); }
+.choice-item.selected { border-color: var(--equals-bg); box-shadow: 0 0 8px var(--equals-bg); }
+.choice-item .lock-icon { font-size: 0.8rem; margin-top: 5px; color: var(--text-color); opacity: 0.8; }
+.choice-item.locked { cursor: not-allowed; opacity: 0.6; }
+.choice-item.locked:hover { transform: none; }
+
+.wallet-display { width: 100%; display: flex; justify-content: space-between; align-items: center; background-color: var(--display-bg); padding: 10px 15px; border-radius: 10px; font-weight: 600; }
+.currency-prices { margin-top: 10px; width: 100%; text-align: center; font-size: 0.9rem; opacity: 0.9; }
+.currency-prices h4 { margin-top: 0; }
+.currency-prices p { margin: 5px 0; }
+
+#history-list { list-style: none; padding: 0; }
+#history-list li { background-color: var(--display-bg); margin-bottom: 10px; padding: 15px; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; }
+#history-list li:hover { background-color: var(--btn-hover-bg); }
+#history-list .hist-expr { font-size: 0.9rem; opacity: 0.7; }
+#history-list .hist-result { font-size: 1.3rem; font-weight: 600; }
+#privacy-policy-modal .modal-content { text-align: right; }
+/* --- أكواد وظيفية جديدة --- */
+#history-modal .hist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#history-modal #delete-hist-btn, #history-modal #confirm-delete-btn {
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+#history-modal .hist-item {
+    display: flex;
+    align-items: center;
+    /* The li element itself is not clickable anymore */
+}
+
+#history-modal .hist-item .hist-details {
+    flex-grow: 1;
+    cursor: pointer; /* The details part is clickable */
+}
+
+#history-modal .modal-content.delete-mode .hist-item .hist-details {
+    cursor: default; /* Not clickable in delete mode */
+}
+
+#history-modal .hist-item input[type="checkbox"] {
+    margin-left: 15px;
+    transform: scale(1.2);
+}
+
+.wallet-address-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.wallet-address-container input {
+    flex-grow: 1;
+    background-color: var(--display-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.wallet-address-container button {
+    background: var(--btn-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.small-note {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* --- أكواد وظيفية جديدة --- */
+#loader .loader-content {
+    text-align: center;
+}
+#loader .loader-content p {
+    font-size: 1rem;
+    color: #888;
+    margin-top: -10px;
+    letter-spacing: 2px;
+}
+.price-package {
+    padding: 10px;
+    background-color: var(--btn-bg);
+    border-radius: 8px;
+    margin-top: 5px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s, transform 0.2s;
+}
+.price-package:hover {
+    background-color: var(--btn-hover-bg);
+    transform: translateY(-2px);
+}
+
+/* --- أكواد الثيمات الجديدة --- */
+
+/* 13. حقل القمح */
+.theme-wheat-field { --bg-color: #f5f5dc; --bg-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(245,222,179,0.5)); --calculator-bg: rgba(255, 250, 240, 0.9); --text-color: #8b4513; --btn-bg: #ffffff; --operator-bg: #f5deb3; --equals-bg: #daa520; --border-color: #eee8aa; }
+
+/* 14. مطر هادئ */
+.theme-rainy-mood { --bg-image: linear-gradient(to bottom, #778899, #b0c4de); --calculator-bg: rgba(245, 245, 245, 0.3); backdrop-filter: blur(8px); --text-color: #001f3f; --btn-bg: rgba(255, 255, 255, 0.2); --operator-bg: rgba(255, 255, 255, 0.3); --equals-bg: #4682b4; --border-color: rgba(255, 255, 255, 0.4); --equals-text: #fff; }
+
+/* 15. أوراق الخريف */
+.theme-autumn-leaves { --bg-image: linear-gradient(to right, #d38312, #a83279); --calculator-bg: rgba(255, 245, 238, 0.9); --text-color: #5d4037; --btn-bg: #ffcc80; --operator-bg: #ef9a9a; --equals-bg: #e65100; --border-color: #ffab91; }
+
+/* 16. زهور الربيع */
+.theme-spring-blossom { --bg-color: #fff0f5; --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ctext y='50' x='10' font-size='20' fill='rgba(255,105,180,0.2)'%3E%E2%9D%A4%3C/text%3E%3C/svg%3E"); --calculator-bg: rgba(255, 255, 255, 0.9); --text-color: #c2185b; --btn-bg: #fce4ec; --operator-bg: #ce93d8; --equals-bg: #ec407a; --border-color: #f8bbd0; }
+
+/* 6. سماء الليل (احترافي) */
+.theme-night-sky { 
+    --bg-color: #0d1117; --bg-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); 
+    --calculator-bg: #161b22; --display-bg: #010409; --text-color: #c9d1d9; --btn-bg: #2d333b; 
+    --operator-bg: #373e47; --equals-bg: #58a6ff; --border-color: #30363d; 
+}
+
+/* 18. صخور بركانية */
+.theme-volcanic-rock { --bg-color: #1a1a1a; --calculator-bg: #212121; --display-bg: #313131; --text-color: #f5f5f5; --btn-bg: #424242; --operator-bg: #616161; --equals-bg: #d32f2f; --border-color: #000000; --equals-text: #fff; }
+.theme-volcanic-rock #user-id-display, .theme-volcanic-rock #history-list li { background-color: var(--display-bg); }
+
+/* 19. حديقة استوائية */
+.theme-tropical-garden { --bg-color: #f1f8e9; --calculator-bg: #ffffff; --display-bg: #dcedc8; --text-color: #33691e; --btn-bg: #f1f8e9; --operator-bg: #aed581; --equals-bg: #ff6f00; --border-color: #c5e1a5; }
+
+/* 20. غيوم طافية */
+.theme-floating-clouds { --bg-color: #e3f2fd; --calculator-bg: #ffffff; --display-bg: #bbdefb; --text-color: #0d47a1; --btn-bg: #e3f2fd; --operator-bg: #90caf9; --equals-bg: #2196f3; --border-color: #bbdefb; }
+
+/* 21. المزاج المتغير */
+.theme-mood-flow { transition: all 1s ease-in-out; }
+.mood-morning { --bg-image: linear-gradient(to top, #fceabb, #f8b500); }
+.mood-day { --bg-image: linear-gradient(to top, #89f7fe, #66a6ff); }
+.mood-evening { --bg-image: linear-gradient(to top, #ff7e5f, #feb47b); }
+.mood-night { --bg-image: linear-gradient(to top, #001f3f, #1a1a2e); }
+.theme-mood-flow { --calculator-bg: rgba(255,255,255,0.7); backdrop-filter: blur(10px); --text-color: #333; --border-color: rgba(255,255,255,0.5); --btn-bg: rgba(255,255,255,0.4); --operator-bg: rgba(255,255,255,0.5); }
+.mood-night.theme-mood-flow { --calculator-bg: rgba(22, 33, 62, 0.7); --text-color: #fff; --border-color: rgba(255,255,255,0.2); --btn-bg: rgba(31, 64, 104, 0.4); --operator-bg: rgba(27, 51, 82, 0.5); }
+
+/* 22. رسم كرتوني */
+.theme-cartoon-sketch { --font-family: 'Patrick Hand', cursive; --bg-color: #fffde7; --calculator-bg: #fff; --display-bg: #f9fbe7; --text-color: #3e2723; --btn-bg: #fff; --border-color: #3e2723; --equals-bg: #4fc3f7; }
+.theme-cartoon-sketch .btn, .theme-cartoon-sketch .calculator, .theme-cartoon-sketch .display { border-radius: 8px !important; border: 2px solid var(--border-color); }
+.theme-cartoon-sketch .keypad { gap: 10px; }
+
+/* 23. كريستال سحري */
+.theme-mystic-crystal { --bg-image: linear-gradient(45deg, #240046, #5a189a, #9d4edd, #c77dff, #e0aaff); --calculator-bg: rgba(255,255,255,0.1); backdrop-filter: blur(10px); --text-color: #fff; --btn-bg: rgba(255,255,255,0.2); --operator-bg: rgba(255,255,255,0.3); --equals-bg: #c77dff; --border-color: rgba(255,255,255,0.3); --equals-text: #3c096c;}
+.theme-mystic-crystal .btn:active { animation: crystal-glow 0.4s ease-out; }
+@keyframes crystal-glow { 0% { box-shadow: 0 0 5px 0 rgba(224, 170, 255, 0.8); } 100% { box-shadow: 0 0 20px 10px rgba(224, 170, 255, 0); } }
+
+/* 24. حاسبة كلاسيكية */
+.theme-retro-calculator { --font-family: 'VT323', monospace; --bg-color: #d8d8d8; --calculator-bg: #4a4a4a; --display-bg: #9eb893; --text-color: #313131; --btn-bg: #e0e0e0; --operator-bg: #f9a825; --equals-bg: #d9534f; --border-color: #333; }
+.theme-retro-calculator .main-display { font-size: 3rem; color: #3e443a; text-shadow: 0 0 2px #9eb893; }
+.theme-retro-calculator .btn { border-radius: 4px; }
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* --- الهامستر المختبئ --- */
+#hamster-peeking {
+    position: fixed;
+    bottom: 0;
+    right: -100px; /* يبدأ خارج الشاشة */
+    width: 150px;
+    height: 120px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 120'%3E%3Cg%3E%3Cpath fill='%23D1B38D' d='M106.6 120c-25.7 0-46.6-20.8-46.6-46.6V46.8c0-1.8.3-3.6.8-5.3C65.8 22.2 84.2 8.3 106.6 8.3c22.4 0 40.7 13.9 45.8 33.2.5 1.7.8 3.5.8 5.3v26.6c0 25.8-20.9 46.6-46.6 46.6z'/%3E%3Cpath fill='%23F4E6D8' d='M106.6 15c19.1 0 35.1 11.8 39.9 28.2.5 1.7.8 3.5.8 5.3v26.8c0 22-17.9 39.9-39.9 39.9s-39.9-17.9-39.9-39.9V48.5c0-1.8.3-3.5.8-5.3C72.1 26.8 87.4 15 106.6 15z'/%3E%3Ccircle fill='%23231F20' cx='93.2' cy='48.5' r='5'/%3E%3Ccircle fill='%23231F20' cx='120' cy='48.5' r='5'/%3E%3Cpath fill='%23231F20' d='M106.6 63.3c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 6.6c-0.9 0-1.6-.7-1.6-1.6s0.7-1.6 1.6-1.6 1.6.7 1.6 1.6-.7 1.6-1.6 1.6z'/%3E%3Cpath fill='%23F4E6D8' d='M60.1 73.4c0 14.7 11.9 26.6 26.6 26.6V73.4H60.1z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 1000;
+}
+.theme-hamster #hamster-peeking {
+    transform: translateX(-100px); /* يظهر الهامستر */
+}
+
+
+/* --- ثيمات جديدة واحترافية --- */
+
+/* 1. ثيم الذهب والأسود */
+.theme-gold-black {
+    --bg-color: #121212;
+    --calculator-bg: #1A1A1A;
+    --display-bg: #000;
+    --text-color: #E0C56E; /* لون ذهبي */
+    --btn-bg: #2C2C2C;
+    --operator-bg: #333333;
+    --equals-bg: linear-gradient(145deg, #BF953F, #FCF6BA, #B38728, #AA771C);
+    --border-color: #FFD700;
+    --equals-text: #000;
+    text-shadow: 0 0 5px #FFD700;
+}
+.theme-gold-black .btn {
+    box-shadow: inset 0px 1px 2px #000, 0px 1px 1px #444;
+}
+
+/* 2. ثيم الرخام والحبر */
+.theme-marble-ink {
+    --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='10' stitchTiles='stitch'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1200' height='800' fill='%23FFFFFF'/%3E%3Crect width='1200' height='800' filter='url(%23a)' opacity='0.1'/%3E%3C/svg%3E");
+    --calculator-bg: rgba(255, 255, 255, 0.9);
+    --display-bg: #EAEAEA;
+    --text-color: #333;
+    --btn-bg: #fff;
+    --operator-bg: #E0E0E0;
+    --equals-bg: #34495E;
+    --border-color: #D3D3D3;
+    --font-family: 'Times New Roman', serif;
+}
+
+
+/* 4. ثيم الساكورا (زهور الكرز) */
+.theme-sakura {
+    --bg-color: #FFF5F5;
+    --calculator-bg: #fff;
+    --display-bg: #FFECF2;
+    --text-color: #6D4C41;
+    --btn-bg: #fff;
+    --operator-bg: #FFCDD2;
+    --equals-bg: #E91E63;
+    --border-color: #FFCDD2;
+}
+
+/* 5. ثيم الخشب والجلد */
+.theme-wood-leather {
+    --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236B4F3A'/%3E%3Cg fill-opacity='0.2'%3E%3Crect width='50' height='50' fill='%235A3F2A'/%3E%3Crect x='50' y='50' width='50' height='50' fill='%235A3F2A'/%3E%3C/g%3E%3C/svg%3E");
+    --calculator-bg: #A0522D; /* لون الجلد */
+    --display-bg: #DEB887; /* لون الخشب الفاتح */
+    --text-color: #F5DEB3; /* لون نص فاتح وواضح */
+    --btn-bg: #CD853F;
+    --operator-bg: #D2691E;
+    --equals-bg: #8B4513; /* بني غامق */
+    --border-color: #8B4513;
+    --equals-text: #F5DEB3;
+    box-shadow: inset 0 0 10px #000;
+}
+
+
+/* --- ثيمات جديدة وأسطورية --- */
+
+/* --- ثيم يوسف BMW M5 1991 (النسخة الفاخرة) --- */
+.theme-youssef-bmw {
+    --bg-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='p' width='30' height='30' patternUnits='userSpaceOnUse'%3E%3Cpath d='M15 0 L30 15 L15 30 L0 15 Z' fill='rgba(255,255,255,0.02)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%231a1a1a'/%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+    --calculator-bg: linear-gradient(135deg, #2E1F16, #1A110A); /* خشب الجوز الداكن */
+    --display-bg: #000000;
+    --text-color: #ff8c00; /* برتقالي BMW الكلاسيكي */
+    --btn-bg: #333;
+    --operator-bg: #2a2a2a;
+    --equals-bg: linear-gradient(135deg, #0088CC, #0033A0, #EF1A2D); /* ألوان شعار M */
+    --border-color: #444;
+    --equals-text: #fff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.4);
+    text-shadow: 0 0 5px rgba(255, 140, 0, 0.5), 0 0 10px rgba(255, 140, 0, 0.3);
+}
+.theme-youssef-bmw .calculator {
+    border: 1px solid #555;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5), inset 0 0 5px rgba(0,0,0,0.4);
+}
+.theme-youssef-bmw .display {
+    box-shadow: inset 0 0 10px #000;
+    border: 1px solid #222;
+}
+.theme-youssef-bmw .main-display {
+    animation: dashboard-glow 2s ease-in-out;
+}
+@keyframes dashboard-glow {
+    from { opacity: 0; text-shadow: 0 0 20px #ff4500; }
+    to { opacity: 1; text-shadow: 0 0 5px rgba(255, 140, 0, 0.5); }
+}
+.theme-youssef-bmw .btn {
+    box-shadow: inset 0px 2px 2px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.05);
+    border-color: #111;
+}
+.theme-youssef-bmw .btn:active {
+    transform: scale(0.96);
+    box-shadow: inset 0px 3px 4px rgba(0,0,0,0.5);
+}
+.theme-youssef-bmw #clock-display {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow);
+}
+.theme-youssef-bmw .btn {
+    box-shadow: inset 0px 2px 2px rgba(0,0,0,0.3), 0px 1px 0px rgba(255,255,255,0.1);
+}
+
+/* ثيم المادة الحيوية */
+.theme-bio-organic .btn { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; animation: bio-morph 15s ease-in-out infinite alternate; }
+@keyframes bio-morph { 0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 100% { border-radius: 60% 40% 30% 70% / 50% 60% 50% 40%; } }
+.theme-bio-organic { --bg-image: linear-gradient(45deg, #2D5A74, #00897B); --calculator-bg: rgba(0, 105, 92, 0.3); --display-bg: rgba(0, 77, 64, 0.5); --text-color: #E0F2F1; --btn-bg: rgba(128, 203, 196, 0.4); --operator-bg: rgba(77, 182, 172, 0.5); --equals-bg: #004D40; --border-color: #4DB6AC; }
+
+/* ثيم المخطوطة القديمة */
+.theme-ancient-manuscript { --font-family: 'Times New Roman', serif; --bg-color: #FDF5E6; --calculator-bg: #FAF0E6; --display-bg: #F5DEB3; --text-color: #5D4037; --btn-bg: #FFF5EE; --operator-bg: #EADDCA; --equals-bg: #8B4513; --border-color: #D2B48C; --equals-text: #FFFFFF; }
+
+/* ثيم واجهة هولوغرام */
+.theme-hologram-ui { --bg-image: linear-gradient(#0C0C2C, #000); --calculator-bg: rgba(0,0,0,0.2); --display-bg: rgba(0,0,0,0.3); --text-color: #00E5FF; --btn-bg: transparent; --operator-bg: transparent; --equals-bg: transparent; --border-color: #00E5FF; --equals-text: #fff; }
+.theme-hologram-ui .btn { box-shadow: 0 0 5px #00E5FF, inset 0 0 5px #00E5FF; }
+
+/* ثيم الساعة الميكانيكية */
+.theme-steampunk-clockwork { --bg-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 25 A 25 25 0 1 1 25 50' stroke='%23BF953F' stroke-width='2' fill='none' opacity='0.2'/%3E%3Cpath d='M75 50 A 25 25 0 1 1 50 75' stroke='%23BF953F' stroke-width='2' fill='none' opacity='0.2'/%3E%3C/svg%3E"); --calculator-bg: #6B4F3A; --display-bg: #3A2E27; --text-color: #F5DEB3; --btn-bg: linear-gradient(145deg, #CD853F, #A0522D); --operator-bg: linear-gradient(145deg, #D2691E, #8B4513); --equals-bg: #BF953F; --border-color: #8B4513; --equals-text: #3A2E27; }
+
+/* ثيم الطبيعة المتغيرة */
+.theme-living-nature { transition: all 1s ease; }
+.season-spring { --bg-image: linear-gradient(to bottom, #a8e063, #56ab2f); --text-color: #1B5E20; --equals-bg: #33691E; }
+.season-summer { --bg-image: linear-gradient(to bottom, #2980b9, #6dd5fa); --text-color: #0d47a1; --equals-bg: #01579b; }
+.season-autumn { --bg-image: linear-gradient(to bottom, #ff8008, #ffc837); --text-color: #e65100; --equals-bg: #bf360c; }
+.season-winter { --bg-image: linear-gradient(to bottom, #e0eafc, #cfdef3); --text-color: #4a4a4a; --equals-bg: #37474F; }
+.theme-living-nature { --calculator-bg: rgba(255,255,255,0.7); --display-bg: rgba(255,255,255,0.5); --btn-bg: rgba(255,255,255,0.6); --operator-bg: rgba(255,255,255,0.4); --border-color: rgba(200,200,200,0.5); --equals-text: #fff; }
+
+
+
+
+/* --- شعار BMW (نص ناعم واحترافي) --- */
+#bmw-logo {
+    height: 28px;
+    display: none; /* يبقى مخفيًا بشكل افتراضي */
+    font-family: system-ui, -apple-system, sans-serif; /* خط حديث ونظيف */
+    font-weight: 400; /* وزن خط عادي (غير عريض) */
+    font-size: 20px;
+    color: #FFD700; /* أسود */
+    line-height: 28px; /* لمحاذاة النص عمودياً */
+    padding: 0 5px;
+    letter-spacing: 0.5px; /* مسافة طبيعية بين الحروف */
+    text-shadow: none; /* إزالة أي توهج موروث من الثيم */
+}
+
+/* إظهار الشعار فقط مع الثيم المخصص */
+.theme-youssef-bmw .calculator #bmw-logo {
+    display: block;
+}

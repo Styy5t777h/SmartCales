@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCalc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=VT323&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader">
+    <div class="loader-content">
+        <h1>SmartCalc</h1>
+        <p>By CodeNest</p>
+    </div>
+</div>
+
+    <div id="app-container" class="hidden">
+        <div class="calculator">
+            <div class="top-bar">
+    <span id="user-id-display">
+        <span id="user-id-text"></span>
+        <button id="copy-id-btn" class="icon-btn-small" title="نسخ المعرف"><i class="fas fa-copy"></i></button>
+    </span>
+
+    <div id="bmw-logo">BMW</div> <button id="menu-btn" class="icon-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
+            <div class="display">
+                <div class="history-display"></div>
+                <div class="main-display">0</div>
+            </div>
+            <div class="keypad">
+                <button class="btn" data-key="clear">C</button>
+                <button class="btn operator" data-key="/">÷</button>
+                <button class="btn operator" data-key="*">×</button>
+                <button class="btn" data-key="backspace">⌫</button>
+
+                <button class="btn number" data-key="7">7</button>
+                <button class="btn number" data-key="8">8</button>
+                <button class="btn number" data-key="9">9</button>
+                <button class="btn operator" data-key="-">-</button>
+
+                <button class="btn number" data-key="4">4</button>
+                <button class="btn number" data-key="5">5</button>
+                <button class="btn number" data-key="6">6</button>
+                <button class="btn operator" data-key="+">+</button>
+
+                <button class="btn number" data-key="1">1</button>
+                <button class="btn number" data-key="2">2</button>
+                <button class="btn number" data-key="3">3</button>
+                <button class="btn equals" data-key="=">=</button>
+
+                <button class="btn" data-key="%">%</button>
+                <button class="btn number" data-key="0">0</button>
+                <button class="btn" data-key=".">.</button>
+            </div>
+            <div class="scientific-keypad hidden">
+                <button class="btn sci" data-key="sin">sin</button>
+                <button class="btn sci" data-key="cos">cos</button>
+                <button class="btn sci" data-key="tan">tan</button>
+                <button class="btn sci" data-key="log">log</button>
+                <button class="btn sci" data-key="ln">ln</button>
+                <button class="btn sci" data-key="^">xʸ</button>
+                <button class="btn sci" data-key="sqrt">√</button>
+                <button class="btn sci" data-key="sq">x²</button>
+                <button class="btn sci" data-key="pi">π</button>
+                <button class="btn sci" data-key="(">(</button>
+                <button class="btn sci" data-key=")">)</button>
+                <button class="btn sci" data-key="E">e</button>
+            </div>
+        </div>
+        <div id="popup-menu" class="hidden">
+            <button id="settings-btn"><i class="fas fa-cog"></i> <span>الإعدادات</span></button>
+            <button id="history-btn"><i class="fas fa-history"></i> <span>السجل</span></button>
+            <button id="sci-calc-toggle"><i class="fas fa-flask"></i> <span>حاسبة علمية</span></button>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal-container hidden">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <h2>الإعدادات</h2>
+            <div class="setting-item column">
+                <h3><i class="fas fa-palette"></i> الثيمات</h3>
+                <div id="themes-container"></div>
+            </div>
+            <div class="setting-item column">
+                <h3><i class="fas fa-coins"></i> العملات</h3>
+                <div class="wallet-display">
+                    <span>رصيدك:</span>
+                    <span id="coin-balance">0 <i class="fas fa-coins"></i></span>
+                </div>
+                <div class="currency-prices">
+    <h4>أسعار العملات</h4>
+    <div class="price-package" data-amount="10" data-price="0.99">10 عملات = 0.99 USDT</div>
+    <div class="price-package" data-amount="20" data-price="1.79">20 عملة = 1.79 USDT</div>
+    <div class="price-package" data-amount="50" data-price="3.99">50 عملة = 3.99 USDT</div>
+    <div class="price-package" data-amount="200" data-price="14.99">200 عملة = 14.99 USDT</div>
+</div>
+                 <button id="add-coins-btn" class="settings-btn-full small-margin-top"><i class="fas fa-shield-alt"></i> لوحة التحكم (خاص)</button>
+            </div>
+            <hr>
+<div class="setting-item">
+    <button id="support-us-btn" class="settings-btn-full"><i class="fas fa-heart"></i> ادعمنا</button>
+</div>
+            <div class="setting-item">
+                 <button id="privacy-policy-btn" class="settings-btn-full"><i class="fas fa-user-secret"></i> سياسة الخصوصية</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="history-modal" class="modal-container hidden"></div>
+    <div id="add-coins-modal" class="modal-container hidden"></div>
+    <div id="privacy-policy-modal" class="modal-container hidden"></div>
+     <div id="support-us-modal" class="modal-container hidden"></div>
+    <div id="hamster"></div>
+     <div id="hamster-peeking"></div>
+    <script src="script.js"></script>
+</body>
+</html>
