@@ -11,6 +11,234 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyIdBtn = document.getElementById('copy-id-btn');
      const userIdText = document.getElementById('user-id-text');
 
+// تعريف النصوص باللغتين
+// ===== استبدل كائن الترجمات كامل بهذا النص =====
+const translations = {
+  ar: {
+    settings: "الإعدادات",
+    history: "السجل",
+    sci_calc: "حاسبة علمية",
+    language: "اللغة",
+    themes: "الثيمات",
+    coins: "العملات",
+    your_balance: "رصيدك:",
+    currency_prices: "أسعار العملات",
+    admin_panel: "لوحة التحكم (خاص)",
+    support_us: "ادعمنا",
+    privacy_policy: "سياسة الخصوصية",
+
+    // اسماء الثيمات (مفتاح = theme_<id> مع استبدال '-' بـ '_')
+    theme_default: "أساسي",
+    theme_dark: "داكن",
+    theme_deep_ocean: "البحر العميق",
+    theme_space: "الفضاء",
+    theme_neon_dark: "النيون الليلي",
+    theme_aurora: "الشفق القطبي",
+    theme_forest: "الغابة",
+    theme_geometric: "هندسي",
+    theme_hamster: "هامستر",
+    theme_sunset: "الغروب",
+    theme_purple_mist: "ضباب بنفسجي",
+    theme_chocolate: "شوكولاتة",
+    theme_desert: "الصحراء",
+    theme_wheat_field: "حقل القمح",
+    theme_rainy_mood: "مطر هادئ",
+    theme_autumn_leaves: "أوراق الخريف",
+    theme_spring_blossom: "زهور الربيع",
+    theme_night_sky: "سماء الليل",
+    theme_volcanic_rock: "صخور بركانية",
+    theme_tropical_garden: "حديقة استوائية",
+    theme_floating_clouds: "غيوم طافية",
+    theme_mood_flow: "المزاج المتغير",
+    theme_cartoon_sketch: "رسم كرتوني",
+    theme_mystic_crystal: "كريستال سحري",
+    theme_retro_calculator: "حاسبة كلاسيكية",
+    theme_old_paper: "ورق قديم",
+    theme_8_bit: "ألعاب كلاسيكية",
+    theme_gold_black: "ذهب وأسود",
+    theme_marble_ink: "رخام وحبر",
+    theme_sakura: "ساكورا",
+    theme_wood_leather: "خشب وجلد",
+    theme_avocado: "أفوكادو",
+    theme_panda: "باندا",
+    theme_youssef_bmw: "يوسف BMW M5",
+    theme_bio_organic: "المادة الحيوية",
+    theme_ancient_manuscript: "مخطوطة قديمة",
+    theme_hologram_ui: "واجهة هولوغرام",
+    theme_steampunk_clockwork: "الساعة الميكانيكية",
+    theme_living_nature: "الطبيعة المتغيرة",
+
+    // نصوص النوافذ والمراسلات
+    privacy_policy_text: `
+      <h3>سياسة الخصوصية لتطبيق SmartCalc</h3>
+      <p><strong>تاريخ السريان: 29 يوليو 2025</strong></p>
+      <p>نحن في CodeNest نأخذ خصوصيتك على محمل الجد. توضح هذه السياسة كيفية تعامل تطبيق SmartCalc مع بياناتك.</p>
+      <h4>1. البيانات التي لا نجمعها</h4>
+      <p>تطبيق SmartCalc مصمم ليعمل بالكامل على جهازك. نحن <strong>لا نجمع أو نخزن أو نشارك أي معلومات تعريف شخصية</strong> عنك، مثل الاسم، البريد الإلكتروني، الموقع، أو أي بيانات حساسة أخرى.</p>
+      <h4>2. البيانات المحفوظة محليًا على جهازك</h4>
+      <p>لتحسين تجربتك، يقوم التطبيق بحفظ بعض البيانات محليًا على جهازك فقط باستخدام تقنية التخزين المحلي (LocalStorage). هذه البيانات تشمل:</p>
+      <ul>
+        <li><strong>معرف المستخدم (User ID):</strong> يتم إنشاء معرف عشوائي فريد لتخصيص العملات والثيمات لحسابك داخل التطبيق فقط. هذا المعرف غير مرتبط بهويتك الحقيقية.</li>
+        <li><strong>إعدادات التطبيق:</strong> الثيم المفضل لديك ورصيد العملات الخاص بك.</li>
+        <li><strong>سجل العمليات:</strong> يتم حفظ آخر عمليات حسابية قمت بها لتسهيل الرجوع إليها.</li>
+      </ul>
+      <p>هذه البيانات <strong>تبقى على جهازك ولا تصل إلى خوادمنا</strong> أو أي طرف ثالث. يمكنك مسح هذه البيانات في أي وقت عن طريق مسح بيانات التطبيق من إعدادات جهازك.</p>
+      <h4>3. الأذونات</h4>
+      <p>تطبيق SmartCalc لا يطلب أي أذونات خاصة من جهازك (مثل الوصول إلى الكاميرا، جهات الاتصال، أو الموقع).</p>
+      <h4>4. تغييرات على سياسة الخصوصية</h4>
+      <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سيتم نشر أي تغييرات هنا.</p>
+      <p>باستخدامك للتطبيق، فإنك توافق على هذه السياسة.</p>
+    `,
+
+    support_us_text: `
+      <h3><i class="fas fa-heart"></i> ادعمنا</h3>
+      <p>شكرًا لاهتمامك بدعمنا! دعمك يساعدنا على تطوير تطبيقات أفضل ومجانية للجميع.</p>
+    `,
+
+    history_title: "سجل العمليات",
+    delete: "حذف",
+
+    // كلمات مساعدة
+    currency_unit: "عملة",
+    wallet_label: "عنوان محفظة USDT (TRC20):",
+    wallet_small_note: "الشبكة: TRON (TRC20) فقط. لا يلزم وجود TAG/MEMO.",
+    wallet_copied: "تم نسخ عنوان المحفظة!",
+    not_enough_coins: "ليس لديك عملات كافية!",
+    buy_theme_confirm: 'شراء ثيم "{name}" مقابل {price} {unit}؟'
+  },
+
+  en: {
+    settings: "Settings",
+    history: "History",
+    sci_calc: "Scientific Calculator",
+    language: "Language",
+    themes: "Themes",
+    coins: "Coins",
+    your_balance: "Your balance:",
+    currency_prices: "Currency Prices",
+    admin_panel: "Admin Panel (Private)",
+    support_us: "Support Us",
+    privacy_policy: "Privacy Policy",
+
+    // Theme names
+    theme_default: "Default",
+    theme_dark: "Dark",
+    theme_deep_ocean: "Deep Ocean",
+    theme_space: "Space",
+    theme_neon_dark: "Neon Dark",
+    theme_aurora: "Aurora",
+    theme_forest: "Forest",
+    theme_geometric: "Geometric",
+    theme_hamster: "Hamster",
+    theme_sunset: "Sunset",
+    theme_purple_mist: "Purple Mist",
+    theme_chocolate: "Chocolate",
+    theme_desert: "Desert",
+    theme_wheat_field: "Wheat Field",
+    theme_rainy_mood: "Rainy Mood",
+    theme_autumn_leaves: "Autumn Leaves",
+    theme_spring_blossom: "Spring Blossom",
+    theme_night_sky: "Night Sky",
+    theme_volcanic_rock: "Volcanic Rock",
+    theme_tropical_garden: "Tropical Garden",
+    theme_floating_clouds: "Floating Clouds",
+    theme_mood_flow: "Mood Flow",
+    theme_cartoon_sketch: "Cartoon Sketch",
+    theme_mystic_crystal: "Mystic Crystal",
+    theme_retro_calculator: "Retro Calculator",
+    theme_old_paper: "Old Paper",
+    theme_8_bit: "8-bit Games",
+    theme_gold_black: "Gold & Black",
+    theme_marble_ink: "Marble & Ink",
+    theme_sakura: "Sakura",
+    theme_wood_leather: "Wood & Leather",
+    theme_avocado: "Avocado",
+    theme_panda: "Panda",
+    theme_youssef_bmw: "Youssef BMW M5",
+    theme_bio_organic: "Bio Organic",
+    theme_ancient_manuscript: "Ancient Manuscript",
+    theme_hologram_ui: "Hologram UI",
+    theme_steampunk_clockwork: "Steampunk Clockwork",
+    theme_living_nature: "Living Nature",
+
+    privacy_policy_text: `
+      <h3>Privacy Policy for SmartCalc</h3>
+      <p><strong>Effective Date: July 29, 2025</strong></p>
+      <p>At CodeNest, we take your privacy seriously. This policy explains how SmartCalc handles your data.</p>
+      <h4>1. Data We Do Not Collect</h4>
+      <p>SmartCalc is designed to work entirely on your device. We <strong>do not collect, store, or share any personally identifiable information</strong> about you, such as name, email, location, or any sensitive data.</p>
+      <h4>2. Data Stored Locally on Your Device</h4>
+      <p>To improve your experience, the app saves some data locally on your device using local storage. This data includes:</p>
+      <ul>
+        <li><strong>User ID:</strong> A randomly generated unique ID to personalize your coins and themes within the app only. This ID is not linked to your real identity.</li>
+        <li><strong>App Settings:</strong> Your preferred theme and coin balance.</li>
+        <li><strong>History:</strong> Recent calculations to help you recall past operations.</li>
+      </ul>
+      <p>This data <strong>remains on your device and is never sent to our servers</strong> or any third party. You can clear this data anytime from your device settings.</p>
+      <h4>3. Permissions</h4>
+      <p>SmartCalc does not request any special permissions from your device (like camera, contacts, or location access).</p>
+      <h4>4. Changes to This Policy</h4>
+      <p>We may update this privacy policy from time to time. Any changes will be posted here.</p>
+      <p>By using the app, you agree to this policy.</p>
+    `,
+
+    support_us_text: `
+      <h3><i class="fas fa-heart"></i> Support Us</h3>
+      <p>Thank you for your interest in supporting us! Your support helps us build better and free apps for everyone.</p>
+    `,
+
+    history_title: "History Log",
+    delete: "Delete",
+
+    currency_unit: "coins",
+    wallet_label: "USDT Wallet Address (TRC20):",
+    wallet_small_note: "Network: TRON (TRC20) only. No TAG/MEMO required.",
+    wallet_copied: "Wallet address copied!",
+    not_enough_coins: "Not enough coins!",
+    buy_theme_confirm: 'Buy theme "{name}" for {price} {unit}?'
+  }
+};
+
+
+
+// استرجاع اللغة المختارة سابقًا من التخزين المحلي، أو اختيار اللغة العربية كافتراضي
+let currentLang = localStorage.getItem("appLang") || "ar";
+
+// دالة لتحديث النصوص في الصفحة حسب اللغة المختارة
+function updateLanguage(lang) {
+    // تعيين لغة الصفحة والاتجاه
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    // تحديث جميع العناصر التي تحتوي على خاصية data-i18n إلى النص المناسب
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+
+    // تحديث نص زر تبديل اللغة
+    document.getElementById("lang-toggle-btn").textContent = lang === "ar" ? "English" : "العربية";
+
+    // حفظ اللغة في التخزين المحلي ليتم تذكرها عند فتح الصفحة مرة أخرى
+    localStorage.setItem("appLang", lang);
+}
+
+// تطبيق اللغة المختارة عند تحميل الصفحة
+updateLanguage(currentLang);
+
+// حدث عند الضغط على زر تغيير اللغة
+document.getElementById("lang-toggle-btn").addEventListener("click", () => {
+    currentLang = currentLang === "ar" ? "en" : "ar";
+    updateLanguage(currentLang);
+    // إذا كانت صفحة الإعدادات مفتوحة أو themes-container موجود، حدث قائمة الثيمات فورًا
+    if (typeof buildThemes === 'function') buildThemes();
+});
+
+
+
+
     // أزرار القائمة المنبثقة
     const settingsBtn = document.getElementById('settings-btn');
     const historyBtn = document.getElementById('history-btn');
@@ -233,27 +461,47 @@ function setSeasonTheme() {
             const item = document.createElement('div'); item.className = 'choice-item';
             if (userSettings.theme === theme.id) item.classList.add('selected');
             if (!isUnlocked) item.classList.add('locked');
-            item.innerHTML = `<span>${theme.name}</span>` + `${!isUnlocked ? `<div class="lock-icon"><i class="fas fa-lock"></i> ${theme.price} <i class="fas fa-coins"></i></div>` : ''}`;
+             const themeKey = 'theme_' + theme.id.replace(/-/g, '_');
+const themeName = translations[currentLang][themeKey] || theme.name;
+item.innerHTML = `<span>${themeName}</span>` + `${!isUnlocked ? `<div class="lock-icon"><i class="fas fa-lock"></i> ${theme.price} <i class="fas fa-coins"></i></div>` : ''}`;
+
             item.addEventListener('click', () => selectTheme(theme, isUnlocked)); container.appendChild(item);
         });
     }
 
-    function selectTheme(theme, isUnlocked) {
-        if (!isUnlocked) {
-            if (userSettings.coins >= theme.price) {
-                if (confirm(`شراء ثيم "${theme.name}" مقابل ${theme.price} عملة؟`)) {
-                    userSettings.coins -= theme.price; userSettings.unlockedThemes.push(theme.id); userSettings.theme = theme.id;
-                    saveUserSettings(); applySettings(); buildThemes();
-                }
-            } else { alert('ليس لديك عملات كافية!'); } return;
+function selectTheme(theme, isUnlocked) {
+    const themeKey = 'theme_' + theme.id.replace(/-/g, '_');
+    const displayName = translations[currentLang][themeKey] || theme.name;
+    if (!isUnlocked) {
+        if (userSettings.coins >= theme.price) {
+            const confirmText = translations[currentLang].buy_theme_confirm
+                .replace('{name}', displayName)
+                .replace('{price}', theme.price)
+                .replace('{unit}', translations[currentLang].currency_unit);
+            if (confirm(confirmText)) {
+                userSettings.coins -= theme.price;
+                userSettings.unlockedThemes.push(theme.id);
+                userSettings.theme = theme.id;
+                saveUserSettings();
+                applySettings();
+                buildThemes();
+            }
+        } else {
+            alert(translations[currentLang].not_enough_coins);
         }
-        userSettings.theme = theme.id; saveUserSettings(); applySettings(); buildThemes();
+        return;
     }
+    userSettings.theme = theme.id;
+    saveUserSettings();
+    applySettings();
+    buildThemes();
+}
+
     
     historyBtn.addEventListener('click', () => {
         const modal = document.getElementById('history-modal');
         let content = `<div class="modal-content"><button class="close-modal-btn">&times;</button>
-            <div class="hist-header"><h2>سجل العمليات</h2><button id="delete-hist-btn" title="حذف"><i class="fas fa-trash"></i></button></div>
+            <div class="hist-header"><h2>${translations[currentLang].history_title}</h2><button id="delete-hist-btn" title="${translations[currentLang].delete}"><i class="fas fa-trash"></i></button></div>
             <ul id="history-list">`;
         if (userSettings.history && userSettings.history.length > 0) {
             userSettings.history.forEach((item, index) => {
@@ -330,46 +578,38 @@ function setSeasonTheme() {
         });
     });
 
-    supportUsBtn.addEventListener('click', () => {
-        const modal = document.getElementById('support-us-modal');
-        const walletAddress = 'TAGn8VXw71E1Ds8aarUKFaJX5TKgiEdbaM';
-        modal.innerHTML = `<div class="modal-content"><button class="close-modal-btn">&times;</button><h3><i class="fas fa-heart"></i> ادعمنا</h3><p>شكرًا لاهتمامك بدعمنا! دعمك يساعدنا على تطوير تطبيقات أفضل ومجانية للجميع.</p><p><strong>عنوان محفظة USDT (TRC20):</strong></p><div class="wallet-address-container"><input type="text" value="${walletAddress}" readonly><button id="copy-wallet-btn"><i class="fas fa-copy"></i></button></div><p class="small-note">الشبكة: TRON (TRC20) فقط. لا يلزم وجود TAG/MEMO.</p></div>`;
-        modal.querySelector('#copy-wallet-btn').addEventListener('click', () => { navigator.clipboard.writeText(walletAddress).then(() => alert('تم نسخ عنوان المحفظة!')); });
-        modal.querySelector('.close-modal-btn').addEventListener('click', () => closeTopModal());
-        openModal(modal);
+supportUsBtn.addEventListener('click', () => {
+    const modal = document.getElementById('support-us-modal');
+    const walletAddress = 'TAGn8VXw71E1Ds8aarUKFaJX5TKgiEdbaM';
+    modal.innerHTML = `<div class="modal-content">
+        <button class="close-modal-btn">&times;</button>
+        ${translations[currentLang].support_us_text}
+        <p><strong>${translations[currentLang].wallet_label}</strong></p>
+        <div class="wallet-address-container">
+            <input type="text" value="${walletAddress}" readonly>
+            <button id="copy-wallet-btn"><i class="fas fa-copy"></i></button>
+        </div>
+        <p class="small-note">${translations[currentLang].wallet_small_note}</p>
+    </div>`;
+    modal.querySelector('#copy-wallet-btn').addEventListener('click', () => {
+        navigator.clipboard.writeText(walletAddress).then(() => alert(translations[currentLang].wallet_copied));
     });
+    modal.querySelector('.close-modal-btn').addEventListener('click', () => closeTopModal());
+    openModal(modal);
+});
+
+
 
 privacyPolicyBtn.addEventListener('click', () => {
     const modal = document.getElementById('privacy-policy-modal');
     modal.innerHTML = `<div class="modal-content">
-            <button class="close-modal-btn">&times;</button>
-            <h3>سياسة الخصوصية لتطبيق SmartCalc</h3>
-            <p><strong>تاريخ السريان: 29 يوليو 2025</strong></p>
-            <p>نحن في CodeNest نأخذ خصوصيتك على محمل الجد. توضح هذه السياسة كيفية تعامل تطبيق SmartCalc مع بياناتك.</p>
-
-            <h4>1. البيانات التي لا نجمعها</h4>
-            <p>تطبيق SmartCalc مصمم ليعمل بالكامل على جهازك. نحن <strong>لا نجمع أو نخزن أو نشارك أي معلومات تعريف شخصية</strong> عنك، مثل الاسم، البريد الإلكتروني، الموقع، أو أي بيانات حساسة أخرى.</p>
-
-            <h4>2. البيانات المحفوظة محليًا على جهازك</h4>
-            <p>لتحسين تجربتك، يقوم التطبيق بحفظ بعض البيانات محليًا على جهازك فقط باستخدام تقنية التخزين المحلي (LocalStorage). هذه البيانات تشمل:</p>
-            <ul>
-                <li><strong>معرف المستخدم (User ID):</strong> يتم إنشاء معرف عشوائي فريد لتخصيص العملات والثيمات لحسابك داخل التطبيق فقط. هذا المعرف غير مرتبط بهويتك الحقيقية.</li>
-                <li><strong>إعدادات التطبيق:</strong> الثيم المفضل لديك ورصيد العملات الخاص بك.</li>
-                <li><strong>سجل العمليات:</strong> يتم حفظ آخر عمليات حسابية قمت بها لتسهيل الرجوع إليها.</li>
-            </ul>
-            <p>هذه البيانات <strong>تبقى على جهازك ولا تصل إلى خوادمنا</strong> أو أي طرف ثالث. يمكنك مسح هذه البيانات في أي وقت عن طريق مسح بيانات التطبيق من إعدادات جهازك.</p>
-
-            <h4>3. الأذونات</h4>
-            <p>تطبيق SmartCalc لا يطلب أي أذونات خاصة من جهازك (مثل الوصول إلى الكاميرا، جهات الاتصال، أو الموقع).</p>
-
-            <h4>4. تغييرات على سياسة الخصوصية</h4>
-            <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سيتم نشر أي تغييرات هنا.</p>
-
-            <p>باستخدامك للتطبيق، فإنك توافق على هذه السياسة.</p>
-        </div>`;
+        <button class="close-modal-btn">&times;</button>
+        ${translations[currentLang].privacy_policy_text}
+    </div>`;
     modal.querySelector('.close-modal-btn').addEventListener('click', () => closeTopModal());
     openModal(modal);
 });
+
     
     addCoinsBtn.addEventListener('click', () => {
         const modal = document.getElementById('add-coins-modal');
