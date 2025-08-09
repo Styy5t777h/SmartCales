@@ -566,3 +566,21 @@ body.modal-open {
 button:focus {
     outline: none;
 }
+
+/* إلغاء أي تظليل أو مربع أزرق عند الضغط أو التركيز */
+button,
+a,
+input,
+textarea {
+    outline: none !important; /* يلغي الإطار الافتراضي */
+    -webkit-tap-highlight-color: transparent; /* يلغي التظليل الأزرق في الموبايل */
+    -webkit-focus-ring-color: transparent; /* احتياط لبعض الأجهزة */
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+    outline: none !important;
+    box-shadow: none !important; /* يمنع الظلال عند التركيز */
+}
