@@ -561,3 +561,8 @@ body.modal-open {
 .theme-youssef-bmw .calculator #bmw-logo {
     display: block;
 }
+
+
+button:focus {
+    outline: none;
+}
